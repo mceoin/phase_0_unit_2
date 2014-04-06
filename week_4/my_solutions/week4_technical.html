@@ -1,0 +1,38 @@
+enumarable#map
+
+map is a public instance method in Ruby that allows you to create a new array of modified objects.
+
+Ruby Core 1.9.3 explains as:
+
+map {|item| block} -> new_ary
+
+Example (from R-docs):
+-------------------------------------------------
+array = ["a","b","c","d"]
+array.map!{|x| x + "!"} #=> ["a!"]
+-------------------------------------------------
+
+Ok, so pretty straight forward. But it starts getting fun once you throw an if-loop in there to generate a modified array of specific things. Let's imagine that you wanted to create a "vowelabet", where we return the word "vowel" instead of an actual vowel in an alphabet.
+
+Example (from E-docs... Eoin's docs):
+-------------------------------------------------
+alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+
+vowel = ["a","e","i","o","u"]
+
+vowelabet = alphabet.map { |letter| 
+	if vowel.include? letter
+	letter = "vowel"
+	else 
+		letter
+	end
+ }
+-------------------------------------------------
+
+Which will return:
+
+vowelabet = ["vowel", "b", "c", "d", "vowel", "f", "g", "h", "vowel", "j", "k", "l", "m", "n", "vowel", "p", "q", "r", "s", "t", "vowel", "v", "w", "x", "y", "z"]
+
+While alphabet remains unchanged.
+
+Happy days : )
